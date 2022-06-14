@@ -461,7 +461,7 @@ class AppService {
 
   Future<double> addToCurrentAccount(
       CurrentAccount account, double amount) async {
-    return db.addToCurrentAccount(account, amount);
+    return await db.addToCurrentAccount(account, amount);
   }
 }
 

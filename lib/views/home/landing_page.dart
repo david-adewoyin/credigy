@@ -141,7 +141,7 @@ class _LandingHomePage extends State<LandingPage>
                             child: const Text("Add Expenses")),
                       ),
                       const SizedBox(width: 10),
-                      Expanded(
+                      /*  Expanded(
                         child: ElevatedButton(
                             onPressed: () {
                               showModalBottomSheet(
@@ -161,12 +161,12 @@ class _LandingHomePage extends State<LandingPage>
                                     color: const Color.fromARGB(255, 0, 171, 20)
                                         .withOpacity(0.7))),
                             child: const Text("Add Purchases")),
-                      ),
+                      ), */
                     ],
                   ),
                   Row(
                     children: [
-                      Expanded(
+                  /*     Expanded(
                         child: ElevatedButton(
                             onPressed: () {
                               showModalBottomSheet(
@@ -185,8 +185,8 @@ class _LandingHomePage extends State<LandingPage>
                                 side: BorderSide(
                                     color: Colors.pink.withOpacity(0.7))),
                             child: const Text("Add Money")),
-                      ),
-                      const SizedBox(width: 10),
+                      ), */
+                      /*   const SizedBox(width: 10),
                       Expanded(
                         child: ElevatedButton(
                             onPressed: () {
@@ -209,6 +209,7 @@ class _LandingHomePage extends State<LandingPage>
                                         .withOpacity(0.7))),
                             child: const Text("Withdraw Money")),
                       ),
+                    */
                     ],
                   ),
                   /*      Row(

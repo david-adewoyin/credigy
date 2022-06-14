@@ -147,6 +147,10 @@ class _AddSalesTransactionState extends State<AddSalesTransaction> {
                             setState(() {
                               _hasQuantity = true;
                             });
+                          } else {
+                            setState(() {
+                              _hasQuantity = false;
+                            });
                           }
                         });
                         _selectedProduct = ProductTransactionModel(
@@ -251,6 +255,9 @@ class _AddSalesTransactionState extends State<AddSalesTransaction> {
                             }
                           },
                           controller: _quantityController,
+                          onChange: (value) {
+                            _selectedProducts.last.quantity = int.parse(value!);
+                          },
                           onSubmit: (value) {
                             _selectedProducts.last.quantity = int.parse(value!);
                           },

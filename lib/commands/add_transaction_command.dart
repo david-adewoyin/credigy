@@ -24,14 +24,22 @@ class AddSalesTransactionCommand extends BaseAppCommand {
     }
 
     double totalAmount = 0;
+    double totalIncome = 0;
     for (var p in sale.products) {
       if (p.quantity != null) {
-        double a = (p.quantity! * p.sellingPrice) - p.costPrice;
+        double q = 1.0 * p.quantity! * 1.0;
+        double a = (q * p.sellingPrice);
+        double i = (q * p.sellingPrice) - (p.costPrice * p.quantity!);
+
         totalAmount = totalAmount + a;
+        totalIncome = totalIncome + i;
       } else {
         totalAmount = totalAmount + p.sellingPrice;
+        totalIncome = totalIncome + p.sellingPrice - p.costPrice;
       }
     }
+    print(totalAmount);
+    print(totalIncome);
     CurrentAccount account;
     if (saleModel.paymentMethod == PaymentMethod.bank) {
       account = CurrentAccount.bank;
@@ -39,13 +47,15 @@ class AddSalesTransactionCommand extends BaseAppCommand {
       account = CurrentAccount.cash;
     }
     var newTotal = await appService.addToCurrentAccount(account, totalAmount);
-
+    var c = await appService.getTotalBusinessCash();
     if (account == CurrentAccount.bank) {
-      appModel.setTotalBank(newTotal);
+      appModel.setTotalBank(c[1]);
     } else {
-      appModel.setTotalCash(newTotal);
+      print("total cash is ${c[0]}");
+      appModel.setTotalCash(c[0]);
     }
-    var total = await appService.addToTotalIncome(totalAmount);
+
+    var total = await appService.addToTotalIncome(totalIncome);
     appModel.setTotalIncome(total);
     var d = sale.id;
     var s = TransactionModel(

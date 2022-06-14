@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
-var _numberFormat = NumberFormat.compact();
+var _numberFormat = NumberFormat.currency(name: "");
 
 class InsightTab extends StatelessWidget {
   const InsightTab({Key? key}) : super(key: key);

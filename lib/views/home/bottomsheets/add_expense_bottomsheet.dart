@@ -30,6 +30,10 @@ final List<DropdownMenuItem<ExpenseType>> expenseType = [
     value: ExpenseType.transportation,
     child: Text("Transportation"),
   ),
+  const DropdownMenuItem(
+    value: ExpenseType.others,
+    child: Text("Others"),
+  ),
 ];
 
 class AddExpenseBottomSheet extends StatefulWidget {

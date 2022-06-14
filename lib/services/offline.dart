@@ -88,7 +88,7 @@ class DbProvider {
   late Database db;
 
   Future<void> initDb() async {
-    String path = join(await getDatabasesPath(), "credigy00010.db");
+    String path = join(await getDatabasesPath(), "credigy00008910.db");
     try {
       await open(path);
     } catch (e) {
@@ -225,11 +225,12 @@ create table $_tablePurchaseRecord (
 
   Future<BusinessMoneyModel> insertMoneyIntoBusiness(
       BusinessMoneyModel money) async {
+    print("ggggg");
     var id = await db.insert(_tableCashTable, money.toMap());
     var current = await getBusinessTotalCash();
 
 //update value of total money in cashflowtable
-    if (money.account == CurrentAccount.cash) {
+/*     if (money.account == CurrentAccount.cash) {
       await db.rawUpdate(
           'Update $_tableCashInBusiness SET $_columnCashTotal = ?   WHERE $_columnCashInBusinessId = 1',
           [money.amount + current[0]]);
@@ -237,7 +238,7 @@ create table $_tablePurchaseRecord (
       await db.rawUpdate(
           'Update $_tableCashInBusiness SET $_columnBankTotal = ?   WHERE $_columnCashInBusinessId = 1',
           [money.amount + current[1]]);
-    }
+    } */
 
     money.id = id;
     return money;
@@ -265,22 +266,16 @@ create table $_tablePurchaseRecord (
 
     if (account == CurrentAccount.bank) {
       double t = current[1] + amount;
-      print(amount);
-      print("the account ${current[1]}");
       await db.rawUpdate(
           'Update $_tableCashInBusiness SET $_columnBankTotal = ?  WHERE $_columnCashInBusinessId = 1',
           [t]);
-      print("the account $t");
 
       return t;
     } else {
       double t = current[0] + amount;
-      print(amount);
-      print("the account ${current[1]}");
       await db.rawUpdate(
           'Update $_tableCashInBusiness SET $_columnCashTotal = ?  WHERE $_columnCashInBusinessId = 1',
           [t]);
-      print("the account $t");
 
       return t;
     }
@@ -794,8 +789,8 @@ create table $_tablePurchaseRecord (
       var c = await getAllProducts();
       var p = c.where((element) => element.productName == productName).first;
       var res = await db.rawUpdate(
-          'Update $_tableInventory SET $_columnQuantity = ?   WHERE $_columnProductId = ?',
-          [quantity, (p.quantity! - quantity)]);
+          'Update $_tableInventory SET $_columnQuantity = ?   WHERE $_columnProductName = ?',
+          [(p.quantity! - quantity), productName]);
       return res;
     } catch (e) {
       throw "error while updating product";
