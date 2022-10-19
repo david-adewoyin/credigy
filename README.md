@@ -1,16 +1,34 @@
 # credigy
+# Credigy
 
-A new Flutter project.
+Credigy is a flutter application that enables SMEs to keep track of their business account
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+. This will also help in reducing setup & development time by allowing you to use same code pattern and avoid re-writing from scratch.
 
-A few resources to get you started if this is your first Flutter project:
+## How to Use 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Step 1:**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Download or clone this repo by using the link below:
+
+```
+https://github.com/david-adewoyin/credigy.git
+```
+**Step 2:**
+
+Go to project root and execute the following command in console to get the required dependencies: 
+
+```
+flutter pub get 
+```
+
+**Step 3:**
+
+Run the project
+
+```
+flutter run
+```
+
+
