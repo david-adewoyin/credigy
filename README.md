@@ -1,10 +1,6 @@
-# credigy
 # Credigy
 
 Credigy is a flutter application that enables SMEs to keep track of their business account
-
-
-. This will also help in reducing setup & development time by allowing you to use same code pattern and avoid re-writing from scratch.
 
 ## How to Use 
 
